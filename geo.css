@@ -1,0 +1,101 @@
+.open{
+    pointer-events: all !important;
+    animation: var(--speed) var(--bezier) showModal forwards;
+    perspective: 1px !important;
+    transition: opacity var(--speed) var(--bezier) !important;
+    margin: 0 !important;
+}
+
+.blurBg--match{
+    z-index: 9;
+    position: fixed;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background-color: rgba(0,0,0,0.4);
+    transition: var(--speed) var(--bezier);
+}
+
+.blurBg--match.on{
+    pointer-events: all;
+    opacity: 1;
+}
+
+.hider--match{
+    position: absolute;
+    inset: 0;
+    background: var(--elBackColor);
+    z-index: 999999;
+    border-radius: 10px;
+    opacity: 0;
+    pointer-events: none;
+    box-shadow: var(--elBoxShadow) !important;
+    transition: border-radius var(--speed) var(--bezier);
+}
+.hiding{
+    animation: var(--speed) var(--bezier) hiding forwards;
+}
+
+@keyframes hiding {
+    from{
+        opacity: 0;
+        
+    }
+    to{
+        opacity: 1;
+    }
+}
+.hideApp{
+    background-color: rgba(0,0,0,0) !important;
+    color: rgba(0,0,0,0)!important;
+    box-shadow: none !important;
+}
+
+
+@keyframes showModal {
+    from{
+        transform: scale(var(--scaleX), var(--scaleY)) translate(0px,0px);
+        color: rgba(0,0,0,0);
+    }
+    to{
+        transform: scale(1) translate(var(--offSetLeft), var(--offSetTop));
+    }
+}
+
+
+.hideModal{
+    pointer-events: none;
+    animation: var(--speed) var(--bezier) hideModal forwards;
+    margin: 0 !important;
+}
+
+@keyframes hideModal {
+    from{
+        opacity: 1;
+        transform: scale(1) translate(var(--offSetLeft), var(--offSetTop));
+        
+    }
+    to{
+        opacity: 1;
+        color: rgba(0,0,0,0);
+        transform: scale(var(--scaleX), var(--scaleY)) translate(0px,0px);
+        border-radius: 50px;
+        background-color: var(--elBackColor);
+    }
+}
+
+.matchBorder{
+    animation: calc(var(--speed)/2) ease matchBorder forwards;
+}
+
+@keyframes matchBorder {
+    from{
+        border-radius: 0px;
+    }
+    to{
+        border-radius: var(--borderRad);
+    }
+}
