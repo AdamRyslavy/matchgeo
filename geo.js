@@ -138,6 +138,7 @@ class MatchGeometry {
 			modal.remove()
 			el.appendChild(modal)
 		}
+		modal.style.pointerEvents = 'none'
 		const hider = document.createElement('div')
 		hider.classList.add('hider--match')
 		if (!this.elementTo) {
@@ -190,6 +191,7 @@ class MatchGeometry {
 			modal.style.left = -offSLeft + 'px'
 			modal.style.top = -offSTop + 'px'
 			prevent = true
+			modal.style.pointerEvents = 'all'
 		}, speedScope)
 	}
 
