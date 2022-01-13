@@ -19,7 +19,7 @@ pozadí je možno stylovat, pomocí metody styleBg(). Okno se automaticky zavír
 const geo = new MatchGeometry({
     el: '.vyjit',
     elTo: '.okno',
-    closeEl: '.zavritBtn'
+    closeEl: '.zavritBtn',
     speed: 400,
     bezier: 'ease-in',
 })
