@@ -5,12 +5,12 @@ const geo = new MatchGeometry({})
 ```
 
 ## atributy instance
-**el** => je element ze kterého má okno vyjít, spouštěč(povinný)
-**elTo** => je samotné okno, do kterého se chceme dostat, ze spouštěče
+- **el** => je element ze kterého má okno vyjít, spouštěč(povinný)
+- **elTo** => je samotné okno, do kterého se chceme dostat, ze spouštěče
 (*pokud nespecifikuji elTo, MatchGeometry bude považovat jako elTo, první přímé díťě, vychazejícíhé elementu*)
-**speed** => rychlost přechodu v milisekundách [nepovinné, přednastaveno: 350ms]
-**bezier** => specifikování bezierovi křivky pro typ přechodu [nepovinné, přednastaveno: easeOutQuart(cubic-bezier(0.25, 1, 0.5, 1))]
-**closeEl** => element, který slouží jako tlačítko pro zavření okna(nepovinný). MatchGeometry automaticky vytvoří zatmavené pozadí za daným oknem, 
+- **speed** => rychlost přechodu v milisekundách [nepovinné, přednastaveno: 350ms]
+- **bezier** => specifikování bezierovi křivky pro typ přechodu [nepovinné, přednastaveno: easeOutQuart(cubic-bezier(0.25, 1, 0.5, 1))]
+- **closeEl** => element, který slouží jako tlačítko pro zavření okna(nepovinný). MatchGeometry automaticky vytvoří zatmavené pozadí za daným oknem, 
 pozadí je možno stylovat, pomocí metody styleBg(). Okno se automaticky zavírá, pokud uživatel klikne mimo něj
 
 #### syntaxe:
