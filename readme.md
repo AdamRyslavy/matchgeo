@@ -9,8 +9,11 @@ V praxi na něj můžeme narazit, při otevíraní a zavíraní aplikací na IOS
 specifikujeme instanci  MatchGeometry
 
 ---
-### syntaxe:
+### #syntaxe:
+
+```javascript
 const geo = new MatchGeometry({})
+```
 ---
 
 ### atributy instance
@@ -28,8 +31,9 @@ mnoho, avšak všechny blogy sdílejí stejné okno, jelikož blog má pevně da
 pozadí je možno stylovat, pomocí metody styleBg(). Okno se automaticky zavírá, pokud uživatel klikne mimo něj
 
 ---
-### syntaxe:
+#### syntaxe:
 
+```javascript
 const geo = new MatchGeometry({
     el: '.vyjit',
     elTo: '.okno',
@@ -37,21 +41,19 @@ const geo = new MatchGeometry({
     speed: 400,
     bezier: 'ease-in',
 })
-
----
+```
 
 metoda *styleBg* akceptuje jakoukoliv validní syntaxi css. Průhlednost pozadí zásadně specifikovat pomocí alpha hodnoty, než-li opacitou, jelikož by to 
 zabraňovalo plynulému přechodu pozadí
 
----
-### syntaxe:
+#### syntaxe:
 
+```javascript
 geo.styleBg({
     backgroundColor: 'blue',
     backdropFilter: 'blur(10px)'
 })
-
----
+```
 
 ## Výkon
 - všechny přechody se transformují, tudíž nezasahují do paint layoutu a nezpůsobují layout shift(stránka nepřepočítává každou změněnou souřadnici).
