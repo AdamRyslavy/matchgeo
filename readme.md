@@ -1,20 +1,13 @@
-#dokumentace
-
 ## Co je to MatchGeometry?
 MatchGeometry je styl přechodu mězi dvěma elementy, počátečním a cílovým.
 Cílový element, sdílý dimenze počátečního elementu, a tím se vytvoří plynulý přechod mezi nimi, jelikož z něj jakoby vychází a následně i zachazí.
-V praxi na něj můžeme narazit, při otevíraní a zavíraní aplikací na IOS, nebo Androidu.
-
-## Návov pro použití
-specifikujeme instanci  MatchGeometry
-
+V praxi na něj můžeme narazit, při otevíraní a zavíraní aplikací na IOS, nebo Androidu
 ---
-### #syntaxe:
+### syntaxe:
 
 ```javascript
 const geo = new MatchGeometry({})
 ```
----
 
 ### atributy instance
 **el** => je element ze kterého má okno vyjít, spouštěč(povinný)
@@ -30,7 +23,6 @@ mnoho, avšak všechny blogy sdílejí stejné okno, jelikož blog má pevně da
 **closeEl** => element, který slouží jako tlačítko pro zavření okna(nepovinný). MatchGeometry automaticky vytvoří zatmavené pozadí za daným oknem, 
 pozadí je možno stylovat, pomocí metody styleBg(). Okno se automaticky zavírá, pokud uživatel klikne mimo něj
 
----
 #### syntaxe:
 
 ```javascript
