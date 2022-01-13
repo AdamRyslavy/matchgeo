@@ -25,7 +25,7 @@ const geo = new MatchGeometry({
 })
 ```
 
-metoda *styleBg* akceptuje jakoukoliv validní syntaxi css. Průhlednost pozadí zásadně specifikovat pomocí alpha hodnoty, než-li opacitou, jelikož by to 
+metoda **styleBg** akceptuje jakoukoliv validní syntaxi css. Průhlednost pozadí zásadně specifikovat pomocí alpha hodnoty, než-li opacitou, jelikož by to 
 zabraňovalo plynulému přechodu pozadí
 
 #### syntaxe:
