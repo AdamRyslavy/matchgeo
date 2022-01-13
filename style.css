@@ -8,7 +8,7 @@ body{
     font-family: 'Lato', sans-serif;
     height: 100vh;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     overflow: hidden;
     padding: 1rem;
@@ -31,19 +31,15 @@ h1{
 
 .grid__wrapper > *{
     border-radius: 5px;
-    background-color: #E91E63;
+    background-color: rgb(223, 187, 187);
     display: grid;
     place-items: center;
     width: 250px;
     height: 100px;
-    color: white;
+    color: black;
     font-weight: light;
     cursor: pointer;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-
-.app > p {
-    pointer-events: none;
 }
 
 .indicator {
@@ -52,30 +48,19 @@ h1{
 
 .container {
     position: relative;
-    width: 700px;
-    height: 350px;
+    width: 500px;
+    height: 700px;
+    background-color: white;
   }
   
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0);
-    transition: background 0.5s ease;
-  }
-  
-  .container:hover .overlay {
-    display: block;
-    background: rgba(0, 0, 0, .3);
-  }
   
   img {
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: 50%;
     left: 0;
+    bottom: 0;
+    transform: scale(1.1);
   }
   
   .title {
@@ -87,7 +72,7 @@ h1{
     font-size: 30px;
     text-align: center;
     text-transform: uppercase;
-    color: white;
+    color: black;
     z-index: 1;
     transition: top .5s ease;
   }
@@ -110,8 +95,8 @@ h1{
     width: 200px;
     padding: 12px 48px;
     text-align: center;
-    color: white;
-    border: solid 2px white;
+    color: black;
+    border: solid 2px black;
     z-index: 1;
   }
   

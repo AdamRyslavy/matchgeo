@@ -5,6 +5,7 @@ let prevent = false
 let geoBezier
 let pageT = false
 let toModal = null
+let globalModal = null
 const setStyle = {
 	position: 'absolute',
 	transformOrigin: 'left top',
@@ -27,29 +28,31 @@ const resetValue = opacity => {
 }
 
 window.addEventListener('click', e => {
-	if (modalScope && prevent) {
-		if (e.target.classList.contains('blurBg--match')) {
-			resetValue(false)
-			modalScope.classList.add('hideModal')
-			document.querySelector('.hider--match').classList.add('hiding')
-			modalScope.style.opacity = 0
-			modalScope.classList.remove('open')
-			document.querySelector('.blurBg--match').classList.remove('on')
-			setTimeout(() => {
-				globalTarget.classList.add('matchBorder')
-				globalTarget.addEventListener('animationend', () =>
-					globalTarget.classList.remove('matchBorder')
-				)
-			}, speedScope)
-			setTimeout(() => {
-				resetValue(true)
-				prevent = false
-				modalScope.classList.remove('hideModal')
-				document.querySelector('.hider--match').classList.remove('hiding')
-				globalTarget.classList.remove('hideApp')
-				modalScope = null
-				document.querySelector('.hider--match').remove()
-			}, speedScope)
+	if (prevent) {
+		if (modalScope) {
+			if (e.target.classList.contains('blurBg--match')) {
+				resetValue(false)
+				modalScope.classList.add('hideModal')
+				document.querySelector('.hider--match').classList.add('hiding')
+				modalScope.style.opacity = 0
+				modalScope.classList.remove('open')
+				document.querySelector('.blurBg--match').classList.remove('on')
+				setTimeout(() => {
+					globalTarget.classList.add('matchBorder')
+					globalTarget.addEventListener('animationend', () =>
+						globalTarget.classList.remove('matchBorder')
+					)
+				}, speedScope)
+				setTimeout(() => {
+					resetValue(true)
+					prevent = false
+					modalScope.classList.remove('hideModal')
+					document.querySelector('.hider--match').classList.remove('hiding')
+					globalTarget.classList.remove('hideApp')
+					modalScope = null
+					document.querySelector('.hider--match').remove()
+				}, speedScope)
+			}
 		}
 	}
 })
@@ -59,6 +62,7 @@ class MatchGeometry {
 		geoBezier = conf.bezier
 		this.elementTo = null
 		this.pageTransition = false
+		globalModal = conf.el
 		if (conf.elTo) {
 			toModal = document.querySelector(`${conf.elTo}`)
 			this.elementTo = document.querySelector(`${conf.elTo}`)
@@ -110,12 +114,16 @@ class MatchGeometry {
 	}
 
 	matchGeometry(e) {
+		let el = e.target
+		if (!e.target.classList.contains(`${globalModal.substring(1)}`)) {
+			el = e.target.offsetParent
+		}
 				if (prevent) {
 					return
 				}
 		if (
-			e.target.getBoundingClientRect().width === document.documentElement.clientWidth &&
-			e.target.getBoundingClientRect().height === document.documentElement.clientHeight
+			el.getBoundingClientRect().width === document.documentElement.clientWidth &&
+			el.getBoundingClientRect().height === document.documentElement.clientHeight
 		) {
 			pageT = true
 		} else {
@@ -124,11 +132,11 @@ class MatchGeometry {
 		let modal
 		const root = document.documentElement
 		if (!toModal) {
-			modal = e.target.children[0]
+			modal = el.children[0]
 		} else {
 			modal = toModal
 			modal.remove()
-			e.target.appendChild(modal)
+			el.appendChild(modal)
 		}
 		const hider = document.createElement('div')
 		hider.classList.add('hider--match')
@@ -139,21 +147,21 @@ class MatchGeometry {
 		}
 		document.querySelector('.blurBg--match').classList.add('on')
 		modalScope = modal
-		globalTarget = e.target
+		globalTarget = el
 		let offSLeft =
-			e.target.getBoundingClientRect().left -
+			el.getBoundingClientRect().left -
 			window.innerWidth / 2 +
 			modal.getBoundingClientRect().width / 2
 		let offSTop =
-			e.target.getBoundingClientRect().top -
+			el.getBoundingClientRect().top -
 			window.innerHeight / 2 +
 			modal.getBoundingClientRect().height / 2
 		if (pageT) {
-			offSLeft = e.target.getBoundingClientRect().left
-			offSTop = e.target.getBoundingClientRect().top
+			offSLeft = el.getBoundingClientRect().left
+			offSTop = el.getBoundingClientRect().top
 		}
-		let scaleX = e.target.getBoundingClientRect().width / modal.getBoundingClientRect().width
-		let scaleY = e.target.getBoundingClientRect().height / modal.getBoundingClientRect().height
+		let scaleX = el.getBoundingClientRect().width / modal.getBoundingClientRect().width
+		let scaleY = el.getBoundingClientRect().height / modal.getBoundingClientRect().height
 		root.style.setProperty('--offSetLeft', -offSLeft + 'px')
 		root.style.setProperty('--offSetTop', -offSTop + 'px')
 		root.style.setProperty('--speed', speedScope + 'ms')
@@ -162,18 +170,18 @@ class MatchGeometry {
 		root.style.setProperty('--bezier', geoBezier)
 		root.style.setProperty(
 			'--elBackColor',
-			window.getComputedStyle(e.target, null).getPropertyValue('background-color')
+			window.getComputedStyle(el, null).getPropertyValue('background-color')
 		)
 		root.style.setProperty(
 			'--elBoxShadow',
-			window.getComputedStyle(e.target, null).getPropertyValue('box-shadow')
+			window.getComputedStyle(el, null).getPropertyValue('box-shadow')
 		)
 		root.style.setProperty(
 			'--borderRad',
-			window.getComputedStyle(e.target, null).getPropertyValue('border-radius')
+			window.getComputedStyle(el, null).getPropertyValue('border-radius')
 		)
 		setTimeout(() => {
-			e.target.classList.add('hideApp')
+			el.classList.add('hideApp')
 			modal.classList.add('open')
 			modal.style.opacity = null
 		}, 1)

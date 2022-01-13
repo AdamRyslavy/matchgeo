@@ -29,6 +29,7 @@ pozadí je možno stylovat, pomocí metody styleBg(). Okno se automaticky zavír
 
 ---
 ### syntaxe:
+
 const geo = new MatchGeometry({
     el: '.vyjit',
     elTo: '.okno',
@@ -36,6 +37,7 @@ const geo = new MatchGeometry({
     speed: 400,
     bezier: 'ease-in',
 })
+
 ---
 
 metoda *styleBg* akceptuje jakoukoliv validní syntaxi css. Průhlednost pozadí zásadně specifikovat pomocí alpha hodnoty, než-li opacitou, jelikož by to 
@@ -43,10 +45,12 @@ zabraňovalo plynulému přechodu pozadí
 
 ---
 ### syntaxe:
+
 geo.styleBg({
     backgroundColor: 'blue',
     backdropFilter: 'blur(10px)'
 })
+
 ---
 
 ## Výkon
