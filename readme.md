@@ -1,9 +1,3 @@
-## Co je to MatchGeometry?
-
-MatchGeometry je styl přechodu mězi dvěma elementy, počátečním a cílovým.
-Cílový element, sdílý dimenze počátečního elementu, a tím se vytvoří plynulý přechod mezi nimi, jelikož z něj jakoby vychází a následně i zachazí.
-V praxi na něj můžeme narazit, při otevíraní a zavíraní aplikací na IOS, nebo Androidu
----
 #### syntaxe:
 
 ```javascript
