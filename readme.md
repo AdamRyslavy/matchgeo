@@ -40,9 +40,9 @@ geo.styleBg({
 ## Výkon
 - všechny přechody se transformují, tudíž nezasahují do paint layoutu a nezpůsobují layout shift(stránka nepřepočítává každou změněnou souřadnici).
 - používají se vlastnosti, které donutí engine vykreslovat pomocí GPU.
-- jelikož, dané okna se škálují pomocí vlastností transform, u které může dojít, k rozmazaní textu.
 
 ## Vykreslování textu
-Po dokončení animace, se oknu nastaví pevné souřadnice[x,y]. Nemá vliv na výkon
+Jelikož, dané okna se škálují pomocí vlastností transform, u které může dojít, k rozmazaní textu,
+po dokončení animace, se oknu nastaví pevné souřadnice[x,y]. Nemá vliv na výkon
 x -> vzdálenost prostředku od vrcholu viewportu
 y -> vzdálenost prostředku od levého kraje viewportu
